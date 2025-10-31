@@ -1,0 +1,632 @@
+.bgModalBanking {
+    background-color: black;
+    opacity: 0.7;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+
+.modalBookingBanking {
+    width: 95%;
+    height: 90%;
+    top: 2.5%;
+    left: 2.5%;
+    position: fixed;
+    overflow-y: auto;
+    top: 0;
+    z-index: 100;
+    font-family: 'lator';
+    background-color: #f3f2f2;
+    height: auto;
+    min-height: 100%;
+    position: relative;
+}
+
+.bankLogo {
+    width: 160px;
+    float: left;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.brandLogo {
+    width: 100px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.textBanking {
+    font-family: "Arial";
+    font-size: 14px;
+    text-align: justify;
+    width: 95%;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.textBankingmini {
+    font-family: "Arial";
+    font-size: 12px;
+    text-align: justify;
+    width: 95%;
+    padding: 10px;
+}
+
+.continueB {
+    text-align: center;
+    padding: 4px 8px 4px 8px;
+    font-family: "Helvetica";
+    border: 1px solid gray;
+    background-color: lightgray;
+    width: 100px;
+    border-radius: 5px;
+}
+
+.titleT {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 4px;
+}
+
+.inputnormal {
+    width: 80%;
+    padding: 3px;
+}
+
+.inputBanking {}
+
+.footerTxt {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    background-size: cover;
+}
+
+/* BANCO DE BOGOTÁ */
+
+.modalBooking #bogcc {
+    height: 40px;
+    width: auto;
+    margin-top: 20px;
+}
+
+button.bogcc {
+    background-color: #0040a8;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #0040a8;
+}
+
+input.bogcc {
+    padding: 8px 16px 8px 16px;
+    border: 1px solid #0040a8;
+    font-size: 18px;
+}
+
+input.bogcc:focus {
+    outline: none !important;
+    border: 1px solid #0040a8;
+}
+
+/* NUBANK */
+
+.modalBooking #nubankcc {
+    height: 80px;
+    width: auto;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+button.nubankcc {
+    background-color: #8303d2;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #8303d2;
+}
+
+input.nubankcc {
+    padding: 8px 16px 8px 16px;
+    border: 1px solid #8303d2;
+    font-size: 18px;
+}
+
+input.nubankcc:focus {
+    outline: none !important;
+    border: 1px solid #8303d2;
+}
+
+/* BANBO POPULAR */
+
+.modalBooking #bpop {
+    width: 200px;
+    margin-top: 50px;
+    margin-left: 30px;
+}
+
+button.bpop {
+    background-color: #04873a;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #04873a;
+}
+
+input.bpop {
+    padding: 8px 16px 8px 16px;
+    border: 1px solid #04873a;
+    font-size: 18px;
+}
+
+input.bpop:focus {
+    outline: none !important;
+    border: 1px solid #04873a;
+}
+
+/* BANCOLOMBIA */
+
+.modalBooking #bancolcc {
+    width: 200px;
+    margin-left: 20px;
+}
+
+button.bancolcc {
+    background-color: #fdda24;
+    color: black;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #fdda24;
+}
+
+input.bancolcc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid black;
+    font-size: 16px;
+}
+
+/* BANCO BBVA */
+
+.modalBooking #bbvacc {
+    margin-left: 20px;
+}
+
+button.bbvacc {
+    background-color: #1973b8;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #1973b8;
+}
+
+input.bbvacc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #1973b8;
+    font-size: 16px;
+}
+
+input.bbvacc:focus {
+    outline: none !important;
+    border: 1px solid #1973b8;
+}
+
+/* BANCO DE OCCIDENTE */
+
+.modalBooking #bocc {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+button.bocc {
+    background-color: #008acc;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #008acc;
+}
+
+input.bocc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #008acc;
+    font-size: 16px;
+}
+
+input.bocc:focus {
+    outline: none !important;
+    border: 1px solid #008acc;
+}
+
+/* BANCO AV VILLAS */
+
+.modalBooking #avcc {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+button.avcc {
+    background-color: #0547d6;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #0547d6;
+}
+
+input.avcc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #0547d6;
+    font-size: 16px;
+}
+
+input.avcc:focus {
+    outline: none !important;
+    border: 1px solid #0547d6;
+}
+
+/* BANCO DAVIVIENDA */
+
+.modalBooking #davcc {
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 200px;
+}
+
+button.davcc {
+    background-color: #ed1c27;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ed1c27;
+}
+
+input.davcc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #ed1c27;
+    font-size: 16px;
+}
+
+input.davcc:focus {
+    outline: none !important;
+    border: 1px solid #ed1c27;
+}
+
+/* BANCO CONAVI */
+
+.modalBooking #conavicc {
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 200px;
+}
+
+button.conavicc {
+    background-color: #f5d743;
+    color: black;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #f5d743;
+}
+
+input.conavicc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #f5d743;
+    font-size: 16px;
+}
+
+input.conavicc:focus {
+    outline: none !important;
+    border: 1px solid #f5d743;
+}
+
+/* BANCO TUYA */
+
+.modalBooking #tuyacc {
+    margin-left: 20px;
+    margin-top: 5px;
+    width: 200px;
+}
+
+button.tuyacc {
+    background-color: #ed1c29;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ed1c29;
+}
+
+input.tuyacc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #ed1c29;
+    font-size: 16px;
+}
+
+input.tuyacc:focus {
+    outline: none !important;
+    border: 1px solid #ed1c29;
+}
+
+/* BANCO citibank */
+
+.modalBooking #citiacc {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 200px;
+}
+
+button.citiacc {
+    background-color: #056dae;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #056dae;
+}
+
+input.citiacc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #056dae;
+    font-size: 16px;
+}
+
+input.citiacc:focus {
+    outline: none !important;
+    border: 1px solid #056dae;
+}
+
+/* BANCO credibcc */
+
+.modalBooking #credibcc {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 200px;
+}
+
+button.credibcc {
+    background-color: #ffb600;
+    color: black;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ffb600;
+}
+
+input.credibcc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid black;
+    font-size: 16px;
+}
+
+input.credibcc:focus {
+    outline: none !important;
+    border: 1px solid black;
+}
+
+/* BANCO FALABELLA */
+
+.modalBooking #falacc {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 200px;
+}
+
+button.falacc {
+    background-color: #aad500;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #aad500;
+}
+
+input.falacc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #aad500;
+    font-size: 16px;
+}
+
+input.falacc:focus {
+    outline: none !important;
+    border: 1px solid #aad500;
+}
+
+/* BANCO scotiabank colpatria */
+
+.modalBooking #colpcc {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 200px;
+}
+
+button.colpcc {
+    background-color: #ec111a;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ec111a;
+}
+
+input.colpcc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #ec111a;
+    font-size: 16px;
+}
+
+input.colpcc:focus {
+    outline: none !important;
+    border: 1px solid #ec111a;
+}
+
+/* BANCO ITAU */
+
+.modalBooking #itaucc {
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 70px;
+}
+
+button.itaucc {
+    background-color: #ec7404;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ec7404;
+}
+
+input.itaucc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #ec7404;
+    font-size: 16px;
+}
+
+input.itaucc:focus {
+    outline: none !important;
+    border: 1px solid #ec7404;
+}
+
+/* BANCO NEQUI */
+
+.modalBooking #nequicc {
+    margin-left: 20px;
+    margin-top: 20px;
+    max-height: 60px;
+}
+
+button.nequicc {
+    background-color: #ff2f73;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ff2f73;
+}
+
+input.nequicc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #ff2f73;
+    font-size: 16px;
+}
+
+input.nequicc:focus {
+    outline: none !important;
+    border: 1px solid #ff2f73;
+}
+
+/* BANCO CAJA SOCIAL */
+
+.modalBooking #cajasoc {
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 70px;
+}
+
+button.cajasoc {
+    background-color: #00b2fb;
+    color: white;
+    padding: 6px 12px 6px 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #00b2fb;
+}
+
+input.cajasoc {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #00b2fb;
+    font-size: 16px;
+}
+
+input.cajasoc:focus {
+    outline: none !important;
+    border: 1px solid #00b2fb;
+}
+
+.contenedorv .redM {
+    border: 1px solid red;
+    color: red;
+}
+
+.containerTr .redM {
+    border: 1px solid red;
+    color: red;
+}
+
+.containerTr .redM .placeholder-ciudad-titulo {
+    color: red;
+}
+
+.containerTr .redM .placeholder-ciudad {
+    color: red;
+}
+
+input.redM {
+    border-bottom: 1px solid red;
+}
+
+input.redMF {
+    border: 1px solid red;
+}
+
+input.greenM {
+    border-bottom: 1px solid #00a7a7;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+input[type=checkbox].redM {
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(255, 0, 0, 1);
+    -moz-box-shadow: 0px 0px 0px 1px rgba(255, 0, 0, 1);
+    box-shadow: 0px 0px 0px 1px rgba(255, 0, 0, 1);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*
+Firefox
+ */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.bgModalBanking {
+    background-color: black;
+    opacity: 0.7;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+
+.modalBookingBanking {
+    width: 95%;
+    height: 90%;
+    top: 2.5%;
+    left: 2.5%;
+    position: fixed;
+    overflow-y: auto;
+    top: 0;
+    z-index: 100;
+    font-family: 'lator';
+    background-color: #f3f2f2;
+    height: auto;
+    min-height: 100%;
+    position: relative;
+}

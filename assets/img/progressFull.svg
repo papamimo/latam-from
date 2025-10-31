@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 100 100" style="display: block; width: 100%;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<g id="Page-1">
+		<g id="progressFull">
+			<path d="M 50,50 m 0,-48.5 a 48.5,48.5 0 1 1 0,97 a 48.5,48.5 0 1 1 0,-97" stroke="#eee" stroke-width="3" fill-opacity="0"></path>
+			<path d="M 50,50 m 0,-48.5 a 48.5,48.5 0 1 1 0,97 a 48.5,48.5 0 1 1 0,-97" stroke="#9900CC" stroke-width="3" fill-opacity="0" style="stroke-dasharray: 304.844, 304.844; stroke-dashoffset: 0;"></path>
+		</g>
+    </g>
+</svg>

